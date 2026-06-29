@@ -5,6 +5,7 @@ import SectionTitle from './components/common/SectionTitle/SectionTitle';
 import MacBookCard from './components/sections/MacBookCard/MacBookCard';
 import MacBookProCard from './components/sections/MacBookProCard/MacBookProCard';
 import { IPadAirCard } from './components/sections/iPadAirCard/iPadAirCard';
+import ScrollAnimation from './components/ScrollAnimation/ScrollAnimation';
 import './styles/global.css';
 
 export default function App() {
@@ -27,6 +28,8 @@ export default function App() {
         <MacBookCard />
         <MacBookProCard />
         <IPadAirCard />
+        <ScrollAnimation />
+        
 
       </main>
     </NavProvider>

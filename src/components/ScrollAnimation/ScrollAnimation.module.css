@@ -1,0 +1,28 @@
+/*
+  .container  → dış scroll kancası; yükseklik = SCROLL_HEIGHT (400vh)
+  .sticky     → viewport'a sabitlenir; kullanıcı scroll ettikçe canvas yerinde durur
+  .canvas     → CSS: tam ekran; piksel çözünürlüğü JS'de DPR ile ayarlanır
+*/
+
+.container {
+  height: 280vh;
+  position: relative;
+  background: #000;
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: #000;
+}
+
+.canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
