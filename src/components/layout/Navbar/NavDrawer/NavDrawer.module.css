@@ -1,0 +1,48 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 300;
+}
+
+.drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: min(320px, 100vw);
+  height: 100dvh;
+  background: var(--drawer-bg);
+  z-index: 400;
+  padding: 80px 24px 40px;
+  overflow-y: auto;
+  box-shadow: -8px 0 40px rgba(0, 0, 0, 0.4);
+}
+
+.drawerList {
+  display: flex;
+  flex-direction: column;
+}
+
+.drawerItem {
+  border-bottom: 1px solid var(--nav-border);
+}
+
+.drawerItem:first-child {
+  border-top: 1px solid var(--nav-border);
+}
+
+.drawerLink {
+  display: block;
+  padding: 14px 0;
+  font-size: 17px;
+  font-weight: 400;
+  letter-spacing: -0.022em;
+  color: var(--nav-text);
+  transition: color 150ms ease;
+}
+
+.drawerLink:hover {
+  color: var(--accent);
+}

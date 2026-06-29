@@ -1,0 +1,116 @@
+.card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  max-width: 1100px;
+  height: 660px;
+  margin: 0 auto 80px;
+  border-radius: 60px;
+  box-shadow:
+
+    0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 32px 80px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+  cursor: default;
+  margin-bottom: 0;
+background: linear-gradient(110deg, #5d5d5d 0%, #000000 40%);}
+
+/* Sol — metin */
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 14px;
+  padding: 56px 32px 56px 64px;
+}
+
+.title {
+  font-size: 48px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: #f5f5f7;
+  line-height: 1.05;
+  margin: 0;
+}
+
+.subtitle {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  color: #e0e0e2;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.description {
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: #86868b;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.price {
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: rgba(255, 255, 255, 0.35);
+  margin: 4px 0 0;
+}
+
+/* Sağ — görsel kutu */
+.imageWrapper {
+  flex: 0 0 52%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image {
+  width: 85%;
+  height: auto;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+  margin: auto;
+  clip-path: inset(0 round 32px);
+  filter: drop-shadow(0 24px 48px rgba(0, 0, 0, 0.8));
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .card {
+    flex-direction: column-reverse;
+    height: auto;
+    margin: 0 16px 60px;
+  }
+
+  .imageWrapper {
+    flex: none;
+    width: 100%;
+    height: 300px;
+  }
+
+  .image {
+    width: 80%;
+    height: 100%;
+  }
+
+  .content {
+    align-items: center;
+    text-align: center;
+    padding: 40px 32px 24px;
+  }
+
+  .title {
+    font-size: 36px;
+  }
+
+  .subtitle {
+    font-size: 17px;
+  }
+}

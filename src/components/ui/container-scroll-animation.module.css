@@ -1,0 +1,29 @@
+.container {
+  height: 60rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 8px;
+}
+
+@media (min-width: 768px) {
+  .container {
+    height: 80rem;
+    padding: 80px;
+  }
+}
+
+.inner {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  width: 100%;
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .inner {
+    padding-top: 160px;
+    padding-bottom: 160px;
+  }
+}

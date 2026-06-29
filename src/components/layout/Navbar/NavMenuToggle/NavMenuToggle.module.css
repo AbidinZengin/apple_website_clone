@@ -1,0 +1,25 @@
+.toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  color: var(--nav-text);
+  transition: opacity 200ms ease;
+}
+
+.toggle:hover {
+  opacity: 0.6;
+}
+
+.toggle svg {
+  width: 16px;
+  height: 13px;
+  overflow: visible;
+}
+
+@media (min-width: 768px) {
+  .toggle {
+    display: none;
+  }
+}
