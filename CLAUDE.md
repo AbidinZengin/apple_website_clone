@@ -19,4 +19,9 @@ When given a feature request, you must respond in this exact structure:
 2. **Sub-agent Assignments:** Detailed instructions for the UI, Motion, and QA sub-agents.
 3. **React Core Skeleton:** The foundational React code for the main component.
 
+## Storage & Disk Usage
+* **Memory files:** Store all Claude memory files under `D:\Kullanıcılar\Desktop\React\Claude Project\.claude\memory\` — never write memory to C drive.
+* **Temporary/scratchpad files:** Use `D:\Kullanıcılar\Desktop\React\Claude Project\.claude\scratchpad\` for any temp files — avoid C drive for all file operations.
+* **Reason:** C drive should not be burdened with Claude-related file I/O; all project and session artifacts must stay on D drive.
+
 

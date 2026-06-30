@@ -5,7 +5,9 @@
       "WebFetch(domain:www.apple.com)",
       "Skill(run)",
       "WebFetch(domain:commons.wikimedia.org)",
-      "PowerShell(py *)"
+      "PowerShell(py *)",
+      "Bash(mkdir -p \"D:/Kullanıcılar/Desktop/React/Claude Project/src/components/ScrollAnimation\")",
+      "Bash(mkdir -p \"D:/Kullanıcılar/Desktop/React/Claude Project/public/frames\")"
     ]
   }
 }
