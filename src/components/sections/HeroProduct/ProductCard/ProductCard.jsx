@@ -21,14 +21,7 @@ const itemVariants = {
   },
 };
 
-export default function ProductCard({
-  title,
-  subtitle,
-  price,
-  videoSrc,
-  ctaPrimaryLabel = 'Satın al',
-  ctaSecondaryLabel = 'Daha fazla bilgi ›',
-}) {
+export default function ProductCard({ title, subtitle, price, videoSrc }) {
   const [active, setActive] = useState(false);
 
   return (
@@ -45,11 +38,11 @@ export default function ProductCard({
         <p className={styles.price}>{price}</p>
       </motion.div>
 
-      {/* Video — button hover'ından tetiklenir, kendi merkezinden büyür */}
-      <motion.div className={styles.media} variants={itemVariants}>
+      <motion.div className={styles.interactive} variants={itemVariants}>
+        {/* Video — button hover'ından tetiklenir, kendi merkezinden büyür */}
         <motion.div
           className={styles.videoScaleWrap}
-          animate={{ scale: active ? 1.06 : 1 }}
+          animate={{ scale: active ? 1.1 : 1 }}
           transition={springTransition}
         >
           <video
@@ -65,20 +58,17 @@ export default function ProductCard({
           />
           <div className={styles.vignette} aria-hidden="true" />
         </motion.div>
-      </motion.div>
 
-      <motion.div className={styles.ctaRow} variants={itemVariants}>
-        {/* Buton — hover kaynağı, video kendi merkezinden büyür */}
+        {/* Button — hover kaynağı, kendi merkezinden büyür */}
         <motion.button
           className={styles.buyBtn}
-          animate={{ scale: active ? 1.06 : 1 }}
+          animate={{ scale: active ? 1.1 : 1 }}
           transition={springTransition}
           onMouseEnter={() => setActive(true)}
           onMouseLeave={() => setActive(false)}
         >
-          {ctaPrimaryLabel}
+          Satın al
         </motion.button>
-        <button className={styles.secondaryBtn}>{ctaSecondaryLabel}</button>
       </motion.div>
     </motion.div>
   );
