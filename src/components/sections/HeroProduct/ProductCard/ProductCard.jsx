@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import iphoneImg from '../../../../assets/iphone.jpg';
 import styles from './ProductCard.module.css';
 
 const springTransition = { type: 'spring', stiffness: 160, damping: 28 };
@@ -48,7 +47,6 @@ export default function ProductCard({ title, subtitle, price, videoSrc }) {
           <video
             className={styles.video}
             src={videoSrc}
-            poster={iphoneImg}
             autoPlay
             muted
             loop
