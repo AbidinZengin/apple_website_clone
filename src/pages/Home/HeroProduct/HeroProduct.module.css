@@ -1,0 +1,7 @@
+.section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  /* background yok: main'in animasyonlu backgroundColor'ı (App.jsx) görünsün */
+}

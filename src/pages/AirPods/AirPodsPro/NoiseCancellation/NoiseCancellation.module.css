@@ -1,0 +1,65 @@
+.section {
+  background: #000;
+  padding: var(--space-6xl) var(--space-md);
+}
+
+.intro {
+  font-size: var(--font-size-body);
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  letter-spacing: -0.01em;
+  max-width: 640px;
+  margin: 0 auto var(--space-5xl);
+  text-align: center;
+}
+
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: var(--space-4xl);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.sideStage {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+}
+
+.features {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4xl);
+  max-width: 380px;
+}
+
+.feature {
+  font-size: var(--font-size-body);
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.accent {
+  /* Referans sadakati: kaynak sitede "anti-noise" vurgusu parlak yeşil. */
+  color: #30d158;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: var(--space-4xl) var(--space-sm);
+  }
+
+  .split {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  .features {
+    max-width: 100%;
+    gap: var(--space-lg);
+  }
+}

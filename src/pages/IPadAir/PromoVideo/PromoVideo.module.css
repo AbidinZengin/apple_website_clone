@@ -1,0 +1,25 @@
+.band {
+  background: #fbfbfd;
+  padding: 0 var(--space-lg) var(--space-6xl);
+  text-align: center;
+}
+
+.frame {
+  max-width: 840px;
+  margin: 0 auto;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 24px 48px -16px rgba(0, 0, 0, 0.22);
+}
+
+.video {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.caption {
+  margin-top: var(--space-md);
+  font-size: var(--font-size-body);
+  color: #6e6e73;
+}

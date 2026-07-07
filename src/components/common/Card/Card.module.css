@@ -1,0 +1,127 @@
+.card {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  border-radius: var(--radius-3xl);
+  background: var(--color-graphite);
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.35);
+}
+
+.card[data-tone='light'] {
+  background: linear-gradient(to bottom left, #87a7ca 20%, aliceblue 100%);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.45),
+    0 32px 80px rgba(90, 150, 200, 0.25);
+}
+
+.imageWrapper {
+  flex: 0 0 52%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image {
+  width: 85%;
+  height: auto;
+  object-fit: contain;
+  margin: auto;
+  display: block;
+  clip-path: inset(0 round var(--radius-2xl));
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2xs);
+  padding: var(--space-2xl);
+  text-align: center;
+}
+
+.eyebrow {
+  font-size: var(--font-size-label);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.card[data-tone='light'] .eyebrow {
+  color: rgba(29, 29, 31, 0.62);
+}
+
+.title {
+  font-size: var(--font-size-title);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.card[data-tone='light'] .title {
+  color: #1d1d1f;
+}
+
+.subtitle {
+  font-size: var(--font-size-body);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.card[data-tone='light'] .subtitle {
+  color: #2c2a28;
+}
+
+.price {
+  font-size: var(--font-size-caption);
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.card[data-tone='light'] .price {
+  color: rgba(29, 29, 31, 0.62);
+}
+
+.cta {
+  margin-top: var(--space-md);
+  padding: var(--space-2xs) var(--space-lg);
+  font-size: var(--font-size-label);
+  font-weight: 500;
+  color: #fff;
+  background: var(--accent);
+  border-radius: var(--radius-pill);
+  transition: background var(--duration-base) var(--ease-apple);
+}
+
+.cta:hover {
+  background: #0077ed;
+}
+
+@media (max-width: 768px) {
+  .card {
+    flex-direction: column;
+  }
+
+  .content {
+    padding: var(--space-lg) var(--space-lg) var(--space-xl);
+  }
+
+  .title {
+    font-size: var(--font-size-subheadline);
+  }
+
+  .subtitle {
+    font-size: var(--font-size-body-sm);
+  }
+}

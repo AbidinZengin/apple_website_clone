@@ -1,0 +1,52 @@
+.picker {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.label {
+  font-size: var(--font-size-caption);
+  font-weight: 600;
+  color: #1d1d1f;
+}
+
+.segment {
+  display: inline-flex;
+  align-self: flex-start;
+  gap: var(--space-3xs);
+  padding: var(--space-3xs);
+  background: rgba(0, 0, 0, 0.06);
+  border-radius: var(--radius-pill);
+}
+
+.option {
+  position: relative;
+  padding: var(--space-2xs) var(--space-md);
+  border-radius: var(--radius-pill);
+  font-size: var(--font-size-body-sm);
+  font-weight: 500;
+  color: #6e6e73;
+  transition: color var(--duration-base) var(--ease-apple);
+}
+
+.option:focus-visible {
+  outline: 2px solid #0071e3;
+  outline-offset: 2px;
+}
+
+.optionActive {
+  color: #1d1d1f;
+}
+
+.pill {
+  position: absolute;
+  inset: 0;
+  background: #fff;
+  border-radius: var(--radius-pill);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+}
+
+.optionLabel {
+  position: relative;
+  z-index: 1;
+}

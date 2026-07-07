@@ -1,0 +1,68 @@
+.wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  will-change: transform;
+}
+
+/* Açık temalı sayfalarda (örn. iPhone) navbar ve tüm alt elemanları
+   bu değişkenleri devralarak açık griye/koyu metne döner. */
+.wrapper[data-theme='light'] {
+  --nav-bg: rgba(245, 245, 247, 0.85);
+  --nav-text: #1d1d1f;
+  --nav-text-muted: rgba(29, 29, 31, 0.56);
+  --nav-border: rgba(0, 0, 0, 0.08);
+  --mega-bg: #f5f5f7;
+  --mega-item: rgba(29, 29, 31, 0.82);
+  --search-bg: rgba(0, 0, 0, 0.06);
+  --icon-btn-bg: rgba(0, 0, 0, 0.06);
+  --nav-hover-bg: rgba(0, 0, 0, 0.08);
+}
+
+/* Tamamen düz siyah arka planlı sayfalarda (örn. MacBook Pro) navbar,
+   arkasındaki içerikle aynı ton siyahta kalsın diye saydamlığı kaldırılır. */
+.wrapper[data-theme='black'] {
+  --nav-bg: #000;
+}
+
+/* Mega menu açıkken sayfanın geri kalanını tamamen bulanıklaştıran perde */
+.overlay {
+  position: fixed;
+  top: var(--nav-height);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 90;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: var(--mega-overlay-blur);
+  -webkit-backdrop-filter: var(--mega-overlay-blur);
+}
+
+.bar {
+  height: var(--nav-height);
+  background: var(--nav-bg);
+  backdrop-filter: var(--nav-blur);
+  -webkit-backdrop-filter: var(--nav-blur);
+  border-bottom: 1px solid var(--nav-border);
+  transition: background-color 0.6s var(--ease-apple), border-color 0.6s var(--ease-apple);
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  height: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  gap: 16px;
+}
+
+@media (max-width: 767px) {
+  .inner {
+    grid-template-columns: auto 1fr auto;
+    padding: 0 16px;
+  }
+}

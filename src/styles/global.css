@@ -14,7 +14,10 @@
   --nav-text-muted: rgba(255, 255, 255, 0.56);
   --nav-border: rgba(255, 255, 255, 0.08);
   --nav-blur: blur(20px) saturate(180%);
-  --mega-bg: rgba(22, 22, 23, 0.96);
+  --mega-bg: #161617; /* tam opak — mega menu paneli arkasını göstermez */
+  --mega-overlay-blur: blur(28px) saturate(140%);
+  --mega-item: rgba(255, 255, 255, 0.82);
+  --nav-hover-bg: rgba(255, 255, 255, 0.18);
   --drawer-bg: #1d1d1f;
   --search-bg: rgba(255, 255, 255, 0.1);
   --icon-btn-bg: rgba(255, 255, 255, 0.1);
@@ -22,6 +25,12 @@
   /* Brand */
   --accent: #2997ff;
   --ease-apple: cubic-bezier(0.32, 0.72, 0, 1);
+
+  /* Yüzeyler & metin (koyu bölümler — kart, feature grid vb.) */
+  --color-graphite: #1c1c1e;
+  --color-hairline: rgba(255, 255, 255, 0.08);
+  --text-primary: #f5f5f7;
+  --text-secondary: #86868b;
 
   /* SF Pro system font stack — Apple ekranlarında SF Pro, diğerlerinde en yakın sistem fontu */
   --font-base:
@@ -41,11 +50,62 @@
     'Helvetica Neue',
     Arial,
     sans-serif;
+
+  /* Typography Scale — mevcut component'lerdeki gerçek font-size kullanımlarından türetildi (bkz. .agents/Skills/design-tokens.md) */
+  --font-size-display: 80px;
+  --font-size-headline: 64px;
+  --font-size-title-lg: 48px;
+  --font-size-title: 44px;
+  --font-size-subheadline: 28px;
+  --font-size-eyebrow: 24px;
+  --font-size-body: 19px;
+  --font-size-body-sm: 16px;
+  --font-size-caption: 15px;
+  --font-size-label: 13px;
+  --font-size-micro: 11px;
+
+  /* Spacing Scale — 8px köklü, gerçek padding/margin kullanımlarına snap edilmiş */
+  --space-3xs: 4px;
+  --space-2xs: 8px;
+  --space-xs: 12px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 32px;
+  --space-xl: 40px;
+  --space-2xl: 48px;
+  --space-3xl: 56px;
+  --space-4xl: 64px;
+  --space-5xl: 80px;
+  --space-6xl: 96px;
+
+  /* Radius Scale */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-2xl: 32px;
+  --radius-3xl: 60px;
+  --radius-pill: 980px;
+  --radius-full: 50%;
+
+  /* Motion Durations — --ease-apple yukarıda (Brand) zaten tanımlı */
+  --duration-fast: 150ms;
+  --duration-base: 200ms;
+  --duration-moderate: 300ms;
+  --duration-slow: 500ms;
+  --duration-slower: 600ms;
+  --duration-loop: 1400ms;
+  --duration-shine: 4000ms;
 }
 
 html {
   font-family: var(--font-base);
   font-size: 16px;
+
+  /* Sayfa yüksekliğine göre scrollbar'ın belirip kaybolması navbar'ı yana kaydırmasın diye yer her zaman ayrılır. */
+  scrollbar-gutter: stable;
+  overflow-y: scroll;
 
   /* Apple'ın ikonik pürüzsüz metin hissiyatı */
   -webkit-font-smoothing: antialiased;

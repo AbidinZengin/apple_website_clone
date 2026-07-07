@@ -1,0 +1,17 @@
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--nav-text);
+  transition: opacity 200ms ease, color 0.5s ease;
+}
+
+.logo:hover {
+  opacity: 0.6;
+}
+
+.icon {
+  width: 15px;
+  height: 18px;
+  fill: currentColor;
+}

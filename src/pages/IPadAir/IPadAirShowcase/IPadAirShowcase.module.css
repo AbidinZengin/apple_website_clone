@@ -1,0 +1,154 @@
+.showcase {
+  /* Apple ürün sayfası açık zemini — body (#f5f5f7) üzerinde bir ton daha aydınlık sahne */
+  background: #fbfbfd;
+  color: #1d1d1f;
+  overflow: hidden;
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  align-items: center;
+  gap: var(--space-5xl);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-6xl) var(--space-lg);
+  min-height: 640px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.eyebrow {
+  font-size: var(--font-size-caption);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #86868b;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 6vw, var(--font-size-headline));
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.titleAccent {
+  display: block;
+  background: linear-gradient(96deg, #0071e3 0%, #6d5df6 55%, #b16cea 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.subtitle {
+  font-size: var(--font-size-body);
+  color: #6e6e73;
+  max-width: 38ch;
+}
+
+.specs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-sm) var(--space-md);
+  margin-top: var(--space-2xs);
+  padding-top: var(--space-md);
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.spec {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3xs);
+}
+
+.specValue {
+  font-family: var(--font-display);
+  font-size: var(--font-size-subheadline);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.specLabel {
+  font-size: var(--font-size-label);
+  color: #86868b;
+}
+
+.ctaRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-top: var(--space-2xs);
+}
+
+.price {
+  font-size: var(--font-size-body);
+  color: #6e6e73;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.35em;
+}
+
+.priceValue {
+  font-weight: 600;
+  color: #1d1d1f;
+  display: inline-block;
+}
+
+.buyButton {
+  /* Apple açık tema aksiyon mavisi — dark-nav token'ı (--accent) yerine bilinçli istisna */
+  background: #0071e3;
+  color: #fff;
+  font-size: var(--font-size-body-sm);
+  font-weight: 500;
+  padding: var(--space-2xs) var(--space-md);
+  border-radius: var(--radius-pill);
+}
+
+.buyButton:focus-visible {
+  outline: 2px solid #0071e3;
+  outline-offset: 3px;
+}
+
+.visual {
+  display: flex;
+  justify-content: center;
+  min-width: 0;
+}
+
+.lineup {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 var(--space-lg) var(--space-6xl);
+  text-align: center;
+}
+
+.lineup img {
+  width: 100%;
+  height: auto;
+  user-select: none;
+}
+
+.lineupCaption {
+  margin-top: var(--space-md);
+  font-size: var(--font-size-body);
+  color: #6e6e73;
+}
+
+@media (max-width: 900px) {
+  .inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+    padding: var(--space-4xl) var(--space-md);
+    min-height: auto;
+  }
+
+  .visual {
+    order: 1;
+  }
+}

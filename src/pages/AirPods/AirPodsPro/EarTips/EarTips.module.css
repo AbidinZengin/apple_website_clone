@@ -1,0 +1,168 @@
+.section {
+  position: relative;
+  height: 840vh;
+  background: #000;
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.eyebrow {
+  font-size: var(--font-size-caption);
+  font-weight: 600;
+  color: var(--text-secondary);
+  letter-spacing: -0.01em;
+  margin-bottom: var(--space-2xs);
+}
+
+.headline {
+  font-size: var(--font-size-subheadline);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin-bottom: var(--space-sm);
+}
+
+.intro {
+  font-size: var(--font-size-body);
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  letter-spacing: -0.01em;
+}
+
+.stage {
+  position: relative;
+  width: min(1200px, 98vw);
+  aspect-ratio: 16 / 10;
+}
+
+/* flip ve explode-tips üst üste aynı sahnede; opacity ile devir teslim */
+.layer {
+  position: absolute;
+  inset: 0;
+}
+
+.labels {
+  position: absolute;
+  /* Uç konumları Lottie kompozisyonundaki son kareye hizalı (sol: %26 / %41 / %51). */
+  top: 61%;
+  left: 0;
+  width: 100%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.label {
+  position: absolute;
+  transform: translateX(-50%);
+  font-size: var(--font-size-body);
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.label:nth-child(1) {
+  left: 26%;
+}
+
+.label:nth-child(2) {
+  left: 41%;
+}
+
+.label:nth-child(3) {
+  left: 51%;
+}
+
+/* Referanstaki gibi: açıklama metinleri animasyonun solunda, sola yaslı kolon */
+.sideText {
+  position: absolute;
+  z-index: 2;
+  left: max(var(--space-lg), 8vw);
+  top: 50%;
+  transform: translateY(-50%);
+  width: min(340px, 38vw);
+  font-size: var(--font-size-body);
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+  text-align: left;
+}
+
+/* ANC başlığı: 3.→4. animasyon dönüşümünde ekran ortasında belirir */
+.ancHeader {
+  position: absolute;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  text-align: center;
+  padding: 0 var(--space-md);
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.8);
+}
+
+.ancEyebrow {
+  font-size: var(--font-size-eyebrow);
+  font-weight: 600;
+  color: var(--text-secondary);
+  letter-spacing: -0.01em;
+}
+
+.ancHeadline {
+  font-size: var(--font-size-headline);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+  max-width: 1000px;
+}
+
+/* flip-nc oynarken üzerinden akan anlatım metinleri */
+.overlay {
+  position: absolute;
+  top: 12vh;
+  left: 0;
+  right: 0;
+  margin-inline: auto;
+  width: min(560px, 88vw);
+  z-index: 2;
+  font-size: var(--font-size-body);
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+  text-align: center;
+}
+
+.accent {
+  color: #30d158;
+}
+
+@media (max-width: 768px) {
+  .headline {
+    font-size: var(--font-size-title);
+  }
+
+  .ancHeadline {
+    font-size: var(--font-size-title);
+  }
+
+  .label {
+    font-size: var(--font-size-caption);
+  }
+
+  .sideText {
+    left: var(--space-sm);
+    width: min(280px, 60vw);
+    font-size: var(--font-size-body-sm);
+  }
+}

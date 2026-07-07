@@ -1,0 +1,42 @@
+.section {
+  position: relative;
+  height: 420vh;
+  background: #000;
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.headline {
+  position: absolute;
+  z-index: 2;
+  font-size: var(--font-size-headline);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+  text-align: center;
+  max-width: 1000px;
+  padding: 0 var(--space-md);
+  /* Parlak ürün görseli üzerinde okunabilirlik (MotionGuideline §3 scrim/shadow) */
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.8);
+}
+
+.stage {
+  position: relative;
+  z-index: 1;
+  width: min(920px, 92vw);
+  aspect-ratio: 1 / 1;
+}
+
+@media (max-width: 768px) {
+  .headline {
+    font-size: var(--font-size-title);
+  }
+}

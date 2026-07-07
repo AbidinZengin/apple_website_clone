@@ -1,0 +1,54 @@
+.section {
+  position: relative;
+  height: 360vh;
+  background: #000;
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.headline {
+  position: absolute;
+  font-size: var(--font-size-headline);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+  text-align: center;
+  max-width: 1000px;
+  padding: 0 var(--space-md);
+}
+
+.stage {
+  width: min(1180px, 98vw);
+  aspect-ratio: 16 / 10;
+}
+
+.caption {
+  position: absolute;
+  bottom: 8vh;
+  /* framer-motion y transform'u translateX'i ezdiği için ortalama left/right+margin ile */
+  left: 0;
+  right: 0;
+  margin-inline: auto;
+  width: min(640px, 88vw);
+  font-size: var(--font-size-body);
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+  text-align: center;
+  z-index: 2;
+}
+
+@media (max-width: 768px) {
+  .headline {
+    font-size: var(--font-size-title);
+  }
+}

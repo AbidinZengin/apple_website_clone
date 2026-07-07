@@ -1,0 +1,153 @@
+.wrapper {
+  position: relative;
+  height: 300vh;
+  background: #000;
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  background: #000;
+  padding: 56px 24px 32px;
+}
+
+.header {
+  text-align: center;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.title {
+  margin: 0;
+  font-size: 44px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.18;
+  background: linear-gradient(180deg, #eef8f6 0%, #9fb6c4 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* --- Sahne: çipler dik/cepheden, aynı konumda birbirinin yerine geçer (crossfade) --- */
+.stage {
+  flex: 1;
+  width: 100%;
+  max-width: 500px;
+  min-height: 0;
+  margin-top: 8px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.board {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Sahnenin arkasından büyüyen, arka planla (siyah) uyumlu tek gölge katmanı */
+.stackGlow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 320px;
+  height: 320px;
+  margin: -160px 0 0 -160px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.55) 45%, rgba(0, 0, 0, 0) 72%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.boardTilt {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  aspect-ratio: 1 / 1;
+}
+
+.circuitIcon {
+  position: absolute;
+  inset: 0;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  mix-blend-mode: screen;
+}
+
+.label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 108px;
+  height: 108px;
+  transform: translate(-50%, -50%);
+  border-radius: 12px;
+  background-image: url('../../../assets/m5-chip-lineup.jpg');
+  background-size: 485.9px 262.2px;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.14);
+}
+
+.labelM5 {
+  background-position: -67.5px -73.7px;
+}
+
+.labelM5Pro {
+  background-position: -189px -73.7px;
+}
+
+.labelM5Max {
+  background-position: -310.5px -73.7px;
+}
+
+.bodyCopy {
+  max-width: 640px;
+  margin: 16px auto 0;
+  padding: 0 8px;
+  text-align: center;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.bodyStrong {
+  color: #fff;
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 30px;
+  }
+
+  .board {
+    max-width: 280px;
+  }
+
+  .label {
+    width: 76px;
+    height: 76px;
+  }
+
+  .stackGlow {
+    width: 220px;
+    height: 220px;
+    margin: -110px 0 0 -110px;
+  }
+}
