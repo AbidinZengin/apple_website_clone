@@ -13,7 +13,7 @@ const highlightSlides = [
     id: "camera",
     caption:
       "Heat‑forged aluminum unibody design for exceptional pro capability.",
-    video: cameraReveal,
+    video: cameraReveal, 
     image: cameraExploded,
     captionSize: "42px",
     captionAlign: "left",
