@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import { motion } from 'framer-motion';
-import heroImage from '../../../../assets/iphone.jpg';
+import heroImage from '../../../../assets/iphone/iphone-hero.jpg';
 import { IPHONE_17_PRO_HERO } from './iPhone17ProHero.data';
 import styles from './IPhone17ProHero.module.css';
 

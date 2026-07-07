@@ -4,7 +4,7 @@ import { FINISHES, STORAGE_OPTIONS, SPECS, SPRING } from './ipadAirShowcase.data
 import ColorPicker from './ColorPicker/ColorPicker';
 import StoragePicker from './StoragePicker/StoragePicker';
 import DeviceVisual from './DeviceVisual/DeviceVisual';
-import lineupImage from '../../../assets/ipad-air/ipad-air-lineup.jpg';
+import lineupImage from '../../../assets/ipad/ipad-air-lineup.jpg';
 import styles from './IPadAirShowcase.module.css';
 
 const containerVariants = {

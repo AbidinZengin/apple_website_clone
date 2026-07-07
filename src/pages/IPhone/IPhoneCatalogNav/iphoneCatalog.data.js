@@ -1,4 +1,4 @@
-import iphoneImg from '../../../assets/iphone.jpg';
+import iphoneImg from '../../../assets/iphone/iphone-hero.jpg';
 
 // Backend /api/product/iphone yalnızca gerçek ürünleri döner (Compare, Accessories,
 // Shop iPhone, iOS gibi yardımcı bağlantılar ürün değildir) — bunlar statik kalır.

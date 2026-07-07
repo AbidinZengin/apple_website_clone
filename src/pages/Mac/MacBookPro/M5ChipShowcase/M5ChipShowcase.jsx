@@ -1,6 +1,6 @@
 import { memo, useCallback, useEffect, useRef } from 'react';
 import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
-import chipLineupSrc from '../../../../assets/m5-chip-lineup.jpg';
+import chipLineupSrc from '../../../../assets/macbook/m5-chip-lineup.jpg';
 import { M5_CHIP_SHOWCASE } from './m5ChipShowcase.data';
 import styles from './M5ChipShowcase.module.css';
 

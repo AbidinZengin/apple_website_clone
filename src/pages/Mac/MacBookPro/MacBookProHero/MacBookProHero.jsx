@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import { motion } from 'framer-motion';
-import heroImage from '../../../../assets/macbook-pro.png';
+import heroImage from '../../../../assets/macbook/macbook-pro-hero.png';
 import { MACBOOK_PRO_HERO } from './macBookProHero.data';
 import styles from './MacBookProHero.module.css';
 

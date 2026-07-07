@@ -1,6 +1,6 @@
 import Card from './Card';
-import airImage from '../../../assets/air.jpg';
-import macbookProImage from '../../../assets/macbook-pro.png';
+import airImage from '../../../assets/macbook/macbook-air-hero.jpg';
+import macbookProImage from '../../../assets/macbook/macbook-pro-hero.png';
 
 export default {
   title: 'Common/Card',

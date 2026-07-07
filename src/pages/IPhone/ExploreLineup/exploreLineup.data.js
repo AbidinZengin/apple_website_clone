@@ -1,4 +1,4 @@
-import iphoneImg from '../../../assets/iphone.jpg';
+import iphoneImg from '../../../assets/iphone/iphone-hero.jpg';
 
 export const LINEUP_ITEMS = [
   {

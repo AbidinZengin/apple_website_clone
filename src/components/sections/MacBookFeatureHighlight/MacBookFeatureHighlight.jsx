@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import { motion } from 'framer-motion';
-import proImage from '../../../assets/macbook-pro.png';
+import proImage from '../../../assets/macbook/macbook-pro-hero.png';
 import { MACBOOK_M5_FEATURE_HIGHLIGHT } from './macBookFeatureHighlight.data';
 import styles from './MacBookFeatureHighlight.module.css';
 

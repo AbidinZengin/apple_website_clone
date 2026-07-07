@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import airImage from '../../../assets/air.jpg';
+import airImage from '../../../assets/macbook/macbook-air-hero.jpg';
 import styles from './MacBookCard.module.css';
 
 const enterVariants = {

@@ -4,10 +4,10 @@
  * (store.storeimages.cdn-apple.com — ipad-air-select-wifi-<renk>-202203, png-alpha).
  * `image: null` bırakılırsa DeviceVisual CSS tabanlı cihaz render'ına düşer.
  */
-import finishBlue from '../../../assets/ipad-air/finish-blue.png';
-import finishPurple from '../../../assets/ipad-air/finish-purple.png';
-import finishStarlight from '../../../assets/ipad-air/finish-starlight.png';
-import finishSpaceGray from '../../../assets/ipad-air/finish-space-gray.png';
+import finishBlue from '../../../assets/ipad/finish-blue.png';
+import finishPurple from '../../../assets/ipad/finish-purple.png';
+import finishStarlight from '../../../assets/ipad/finish-starlight.png';
+import finishSpaceGray from '../../../assets/ipad/finish-space-gray.png';
 
 // Proje standardı spring (bkz. .agents/Skills/MotionGuideline.md §4)
 export const SPRING = { type: 'spring', stiffness: 170, damping: 24, mass: 0.9 };

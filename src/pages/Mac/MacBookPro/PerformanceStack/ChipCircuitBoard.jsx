@@ -1,8 +1,8 @@
 import { memo } from 'react';
 import { motion, useMotionTemplate } from 'framer-motion';
-import circuitSparse from '../../../../assets/circuit-sparse.png';
-import circuitMedium from '../../../../assets/circuit-medium.png';
-import circuitDense from '../../../../assets/circuit-dense.png';
+import circuitSparse from '../../../../assets/macbook/circuit-sparse.png';
+import circuitMedium from '../../../../assets/macbook/circuit-medium.png';
+import circuitDense from '../../../../assets/macbook/circuit-dense.png';
 import styles from './PerformanceStack.module.css';
 
 const ICON_SRC = { M5: circuitSparse, M5Pro: circuitMedium, M5Max: circuitDense };

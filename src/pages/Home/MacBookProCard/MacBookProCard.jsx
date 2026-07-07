@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import proImage from '../../../assets/macbook-pro.png';
+import proImage from '../../../assets/macbook/macbook-pro-hero.png';
 import styles from './MacBookProCard.module.css';
 
 const cardVariants = {

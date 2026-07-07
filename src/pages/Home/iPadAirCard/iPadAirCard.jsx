@@ -1,6 +1,6 @@
 import React from "react";
 import { ContainerScroll } from "../../../components/ui/container-scroll-animation";
-import ipadScreen from "../../../assets/ipad-screen.jpg";
+import ipadScreen from "../../../assets/ipad/ipad-air-screen.jpg";
 import styles from "./iPadAirCard.module.css";
 
 export function IPadAirCard() {
