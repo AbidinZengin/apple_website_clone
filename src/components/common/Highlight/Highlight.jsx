@@ -240,7 +240,7 @@ export default function Highlight({
               type="button"
               role="tab"
               aria-selected={i === activeIndex}
-              aria-label={slide.caption ? slide.caption : `${i + 1}`}
+              aria-label={slide.ariaLabel ?? (typeof slide.caption === 'string' ? slide.caption : `${i + 1}`)}
               className={styles.dot}
               data-active={i === activeIndex}
               onClick={() => goTo(i)}

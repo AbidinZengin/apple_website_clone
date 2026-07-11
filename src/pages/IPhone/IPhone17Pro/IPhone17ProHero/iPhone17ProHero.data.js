@@ -9,6 +9,13 @@ export const IPHONE_17_PRO_HERO = {
     installment: 'or $45.79/mo. for 24 mo.',
     cta: 'Buy',
   },
+  // Sepete ekleme yükü (contract: POST /api/cart/items { productType, variantId, quantity }).
+  // TODO(contract): variantId şu an sabit placeholder — gerçek değeri
+  // GET /api/product/iphone/slug/iphone-17-pro -> variants[].id 'den seçilecek.
+  purchase: {
+    productType: 'iphone',
+    variantId: 1,
+  },
   colors: [
     { name: 'Cosmic Orange', hex: '#F77E2D' },
     { name: 'Deep Blue', hex: '#32374A' },

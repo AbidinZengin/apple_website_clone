@@ -1,0 +1,45 @@
+.menu {
+  position: absolute;
+  top: calc(100% + var(--space-2xs));
+  right: 0;
+  min-width: 200px;
+  max-width: 280px;
+  padding: var(--space-2xs);
+  border-radius: var(--radius-md);
+  background: var(--mega-bg);
+  border: 1px solid var(--nav-border);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+  transform-origin: top right;
+}
+
+.username {
+  padding: var(--space-2xs) var(--space-xs);
+  font-size: var(--font-size-label);
+  color: var(--nav-text-muted);
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.divider {
+  height: 1px;
+  margin: 0 var(--space-3xs);
+  background: var(--nav-border);
+}
+
+.item {
+  display: block;
+  width: 100%;
+  margin-top: var(--space-3xs);
+  padding: var(--space-2xs) var(--space-xs);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-caption);
+  color: var(--nav-text);
+  text-align: left;
+  transition: background-color var(--duration-base) var(--ease-apple);
+}
+
+.item:hover {
+  background: var(--nav-hover-bg);
+}

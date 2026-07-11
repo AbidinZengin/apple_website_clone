@@ -1,5 +1,8 @@
-import { memo } from 'react';
+import { memo, useState } from 'react';
 import { motion } from 'framer-motion';
+import { useAuth } from '../../../../services/auth/AuthContext';
+import { useCart } from '../../../../services/cart/CartContext';
+import { useNav } from '../../../../components/Navbar/NavContext';
 import heroImage from '../../../../assets/iphone/iphone-hero.jpg';
 import { IPHONE_17_PRO_HERO } from './iPhone17ProHero.data';
 import styles from './IPhone17ProHero.module.css';
@@ -28,8 +31,29 @@ const staggerContainer = {
 };
 
 function IPhone17ProHero() {
-  const { eyebrow, headlinePlain, headlineAccent, subheadline, imageAlt, price, colors } =
+  const { eyebrow, headlinePlain, headlineAccent, subheadline, imageAlt, price, colors, purchase } =
     IPHONE_17_PRO_HERO;
+  const { user } = useAuth();
+  const { addItem } = useCart();
+  const { openAuth, openCart } = useNav();
+  const [adding, setAdding] = useState(false);
+
+  // Girişsiz: önce oturum aç. Girişli: sepete ekle ve mini-sepeti aç.
+  const handleBuy = async () => {
+    if (!user) {
+      openAuth();
+      return;
+    }
+    setAdding(true);
+    try {
+      await addItem({ productType: purchase.productType, variantId: purchase.variantId, quantity: 1 });
+      openCart();
+    } catch {
+      // Hata CartContext.error'a düşer; buton tekrar denenebilir kalır
+    } finally {
+      setAdding(false);
+    }
+  };
 
   return (
     <section className={styles.hero}>
@@ -76,8 +100,13 @@ function IPhone17ProHero() {
             <p className={styles.priceFrom}>{price.from}</p>
             <p className={styles.priceInstallment}>{price.installment}</p>
           </div>
-          <button type="button" className={styles.buyButton}>
-            {price.cta}
+          <button
+            type="button"
+            className={styles.buyButton}
+            onClick={handleBuy}
+            disabled={adding}
+          >
+            {adding ? 'Ekleniyor…' : price.cta}
           </button>
         </motion.div>
       </motion.div>

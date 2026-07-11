@@ -1,0 +1,104 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.title {
+  margin-top: var(--space-sm);
+  /* 32px skalada yok (subheadline 28 / title 44) — referans ölçümüne sadakat için lokal istisna */
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--auth-text);
+}
+
+.subtitle {
+  margin-top: var(--space-2xs);
+  /* 17px: Apple gövde boyu, skalada 16/19 arası — lokal istisna */
+  font-size: 17px;
+  color: var(--auth-text-muted);
+}
+
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  width: 100%;
+  margin-top: var(--space-lg);
+}
+
+.error {
+  margin-top: var(--space-sm);
+  font-size: var(--font-size-caption);
+  color: var(--auth-error);
+}
+
+.submit {
+  width: 100%;
+  height: 56px;
+  margin-top: var(--space-md);
+  border-radius: var(--radius-pill);
+  background: #0071e3;
+  color: #fff;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  transition: background-color var(--duration-base) var(--ease-apple);
+}
+
+.submit:hover {
+  background: #0077ed;
+}
+
+.submit:disabled {
+  opacity: 0.75;
+  cursor: default;
+}
+
+/* Bekleme göstergesi — buton yüksekliği değişmeden etiketin yerini alır */
+.spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2.5px solid rgba(255, 255, 255, 0.35);
+  border-top-color: #fff;
+  border-radius: var(--radius-full);
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.submit:disabled:hover {
+  background: #0071e3;
+}
+
+.footer {
+  margin-top: var(--space-md);
+  font-size: var(--font-size-caption);
+  color: var(--auth-text-muted);
+}
+
+.switchLink {
+  font-size: inherit;
+  color: var(--auth-link);
+}
+
+.switchLink:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: var(--font-size-subheadline);
+  }
+
+  .fields {
+    margin-top: var(--space-md);
+  }
+}

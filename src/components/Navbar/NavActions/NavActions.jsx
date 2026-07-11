@@ -1,4 +1,9 @@
+import { useRef, useState } from 'react';
 import { useNav } from '../NavContext';
+import { useAuth } from '../../../services/auth/AuthContext';
+import { useCart } from '../../../services/cart/CartContext';
+import AccountMenu from '../AccountMenu/AccountMenu';
+import CartPanel from '../CartPanel/CartPanel';
 import styles from './NavActions.module.css';
 
 function SearchIcon() {
@@ -51,7 +56,24 @@ function AccountIcon() {
 }
 
 export default function NavActions() {
-  const { theme } = useNav();
+  const { theme, openAuth, isCartOpen, toggleCart, closeCart } = useNav();
+  const { user } = useAuth();
+  const { cart, itemCount, loading, updateItemQuantity, removeItem, clearCart } = useCart();
+  const [menuOpen, setMenuOpen] = useState(false);
+  const accountRef = useRef(null);
+  const cartRef = useRef(null);
+
+  // Girişsiz: auth modal'ı açılır; girişli: hesap menüsü toggle edilir
+  const handleAccountClick = () => {
+    if (user) setMenuOpen((p) => !p);
+    else openAuth();
+  };
+
+  // Sepet yalnızca login kullanıcı için; girişsiz tıklama auth modal'ına yönlendirir
+  const handleBagClick = () => {
+    if (user) toggleCart();
+    else openAuth();
+  };
 
   return (
     <div className={styles.actions}>
@@ -68,13 +90,39 @@ export default function NavActions() {
         </span>
       </div>
 
-      <button className={styles.iconBtn} aria-label="Shopping Bag">
-        <BagIcon />
-      </button>
+      <div className={styles.cartWrapper} ref={cartRef}>
+        <button
+          className={styles.iconBtn}
+          aria-label="Shopping Bag"
+          aria-expanded={user ? isCartOpen : undefined}
+          onClick={handleBagClick}
+        >
+          <BagIcon />
+          {user && itemCount > 0 && <span className={styles.badge}>{itemCount > 9 ? '9+' : itemCount}</span>}
+        </button>
+        <CartPanel
+          open={isCartOpen}
+          onClose={closeCart}
+          anchorRef={cartRef}
+          cart={cart}
+          loading={loading}
+          onQuantityChange={updateItemQuantity}
+          onRemove={removeItem}
+          onClear={clearCart}
+        />
+      </div>
 
-      <button className={styles.iconBtn} aria-label="Account">
-        <AccountIcon />
-      </button>
+      <div className={styles.accountWrapper} ref={accountRef}>
+        <button
+          className={styles.iconBtn}
+          aria-label="Account"
+          aria-expanded={user ? menuOpen : undefined}
+          onClick={handleAccountClick}
+        >
+          <AccountIcon />
+        </button>
+        <AccountMenu open={menuOpen} onClose={() => setMenuOpen(false)} anchorRef={accountRef} />
+      </div>
     </div>
   );
 }

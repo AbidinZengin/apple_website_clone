@@ -3,6 +3,7 @@ export const PAGE_THEMES = {
   '/iphone': 'light',
   '/iphone/iphone-17-pro': 'dark',
   '/ipad/ipad-air': 'light',
+  '/ipad/ipad-pro': 'black',
   '/mac/macbook-pro': 'black',
   '/airpods/airpods-pro': 'black',
 };

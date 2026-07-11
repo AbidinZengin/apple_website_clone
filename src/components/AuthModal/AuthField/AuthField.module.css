@@ -1,0 +1,30 @@
+.input {
+  width: 100%;
+  height: 56px;
+  padding: 0 var(--space-md);
+  border: 1px solid transparent;
+  border-radius: var(--radius-lg);
+  background: var(--auth-field-bg);
+  color: var(--auth-text);
+  font-size: 17px; /* Apple gövde boyu — AuthForm başlığıyla aynı lokal istisna */
+  font-family: var(--font-base);
+  transition:
+    border-color var(--duration-base) var(--ease-apple),
+    background-color var(--duration-base) var(--ease-apple),
+    box-shadow var(--duration-base) var(--ease-apple);
+}
+
+.input::placeholder {
+  color: var(--auth-placeholder);
+}
+
+.input:hover {
+  background: var(--auth-field-bg-hover);
+}
+
+.input:focus {
+  outline: none;
+  border-color: #0071e3;
+  background: var(--auth-field-bg-hover);
+  box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.28);
+}

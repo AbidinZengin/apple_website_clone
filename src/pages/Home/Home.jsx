@@ -2,7 +2,6 @@ import HeroProduct from './HeroProduct/HeroProduct';
 import SectionTitle from '../../components/common/SectionTitle/SectionTitle';
 import MacBookCard from './MacBookCard/MacBookCard';
 import MacBookProCard from './MacBookProCard/MacBookProCard';
-import { IPadAirCard } from './iPadAirCard/iPadAirCard';
 import ScrollAnimation from '../../components/ScrollAnimation/ScrollAnimation';
 
 export default function Home() {
@@ -21,7 +20,6 @@ export default function Home() {
 
       <MacBookCard />
       <MacBookProCard />
-      <IPadAirCard />
       <ScrollAnimation />
     </>
   );

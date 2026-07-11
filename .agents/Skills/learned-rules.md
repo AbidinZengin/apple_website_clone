@@ -42,3 +42,4 @@ _(henüz kural yok)_
 
 ### Kod & Yapı
 - **[yapı]** Referans sitelerden sayfa klonlarken navbar klonlanmaz — projenin mevcut global `Navbar`'ı tüm sayfalarda tek gezinmedir; sayfaya özel ikinci bir nav/alt-nav eklenmez. _(2026-07, AirPodsPro)_
+- **[yapı]** Kullanıcı "X sayfasındaki Y bileşeninin aynısını" dediğinde, o mevcut paylaşılan bileşen (`components/common/…`) birebir yeniden kullanılır — yeni bir varyant/alternatif tasarım (ör. Bento Grid) uydurulmaz. Referans verilen bileşeni önce oku, aynı prop deseniyle besle. _(2026-07, iPad Pro Highlight)_

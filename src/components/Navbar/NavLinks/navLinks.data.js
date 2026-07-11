@@ -28,7 +28,7 @@ export const NAV_LINKS = [
     label: 'iPad',
     href: '#ipad',
     subMenu: [
-      { label: 'iPad Pro', href: '#ipad-pro' },
+      { label: 'iPad Pro', href: '/ipad/ipad-pro' },
       { label: 'iPad Air', href: '/ipad/ipad-air' },
       { label: 'iPad mini', href: '#ipad-mini' },
       { label: 'iPad', href: '#ipad-base' },

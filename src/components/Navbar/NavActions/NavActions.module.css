@@ -67,6 +67,32 @@
   transform: scale(1.1);
 }
 
+/* Hesap ikonu + altında açılan menünün konum bağlamı */
+.accountWrapper,
+.cartWrapper {
+  position: relative;
+  display: flex;
+  flex-shrink: 0;
+}
+
+/* Sepetteki toplam adet rozeti — bag ikonunun sağ üstünde */
+.badge {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  min-width: 15px;
+  height: 15px;
+  padding: 0 4px;
+  border-radius: var(--radius-pill);
+  background: #0071e3;
+  color: #fff;
+  font-size: 10px;
+  line-height: 15px;
+  font-weight: 600;
+  text-align: center;
+  pointer-events: none;
+}
+
 /* Icon buttons */
 .iconBtn {
   display: flex;

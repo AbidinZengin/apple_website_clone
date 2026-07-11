@@ -24,6 +24,7 @@ Before executing any development phase, you MUST silently read (`cat` or `read`)
    - **Framer Motion:** `Skills/MotionGuideline.md`.
    - **Design Tokens (typography/spacing/radius/duration):** `Skills/design-tokens.md` (Mandatory before hardcoding any font-size, spacing, radius, or transition value — check `src/styles/global.css` tokens first).
    - **Data Validation/Schemas:** `Skills/validation-schema.md` (Mandatory before feeding JSON to components).
+   - **UI/UX Reference Database (`ui-ux-pro-max`):** Auto-discovered folder skill at `.claude/skills/ui-ux-pro-max/`. A generic, searchable database (161 color palettes, 57 font pairings, 99 UX guidelines, stack guidance). Query it via the bundled Python engine — on THIS machine the working command is `py` (NOT `python3`/`python`, which hit the Windows Store stub): `py .claude/skills/ui-ux-pro-max/scripts/search.py "<query>" --domain <color|style|ux|typography|...>`. Use it as inspiration/reference only. **Precedence:** it is GENERIC; `design-philosophy.md` (Apple taste) and `learned-rules.md` (user corrections) ALWAYS win on any conflict — never let its generic palettes/fonts override the Apple aesthetic or a recorded learned rule.
 
 
 

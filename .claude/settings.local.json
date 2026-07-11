@@ -7,7 +7,11 @@
       "WebFetch(domain:commons.wikimedia.org)",
       "PowerShell(py *)",
       "Bash(mkdir -p \"D:/Kullanıcılar/Desktop/React/Claude Project/src/components/ScrollAnimation\")",
-      "Bash(mkdir -p \"D:/Kullanıcılar/Desktop/React/Claude Project/public/frames\")"
+      "Bash(mkdir -p \"D:/Kullanıcılar/Desktop/React/Claude Project/public/frames\")",
+      "Bash(pkill -f \"storybook\")",
+      "Bash(pkill -f \"vite\")",
+      "Bash(pkill -f \"npm run\")",
+      "Bash(tasklist)"
     ]
   }
 }

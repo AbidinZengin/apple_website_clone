@@ -7,12 +7,19 @@ const NavContext = createContext(null);
 export function NavProvider({ children }) {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [activeMenu, setActiveMenu] = useState(null);
+  const [isAuthOpen, setIsAuthOpen] = useState(false);
+  const [isCartOpen, setIsCartOpen] = useState(false);
   const location = useLocation();
   const theme = getPageTheme(location.pathname);
 
   const toggleDrawer = useCallback(() => setIsDrawerOpen(p => !p), []);
   const closeDrawer  = useCallback(() => setIsDrawerOpen(false), []);
   const closeMenu    = useCallback(() => setActiveMenu(null), []);
+  const openAuth     = useCallback(() => setIsAuthOpen(true), []);
+  const closeAuth    = useCallback(() => setIsAuthOpen(false), []);
+  const openCart     = useCallback(() => setIsCartOpen(true), []);
+  const closeCart    = useCallback(() => setIsCartOpen(false), []);
+  const toggleCart   = useCallback(() => setIsCartOpen(p => !p), []);
 
   return (
     <NavContext.Provider value={{
@@ -22,6 +29,13 @@ export function NavProvider({ children }) {
       activeMenu,
       setActiveMenu,
       closeMenu,
+      isAuthOpen,
+      openAuth,
+      closeAuth,
+      isCartOpen,
+      openCart,
+      closeCart,
+      toggleCart,
       theme,
     }}>
       {children}
