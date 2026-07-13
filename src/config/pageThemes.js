@@ -14,6 +14,14 @@ export const THEME_BACKGROUNDS = {
   black: '#000',
 };
 
+// Prefix bazlı temalar — dinamik route'lar (ör. /buy/:type/:slug) için.
+// Tam eşleşme (PAGE_THEMES) önce denenir, sonra en uzun prefix.
+const THEME_PREFIXES = [
+  ['/buy', 'light'],
+];
+
 export function getPageTheme(pathname) {
-  return PAGE_THEMES[pathname] ?? 'dark';
+  if (PAGE_THEMES[pathname]) return PAGE_THEMES[pathname];
+  const prefix = THEME_PREFIXES.find(([p]) => pathname.startsWith(p));
+  return prefix ? prefix[1] : 'dark';
 }

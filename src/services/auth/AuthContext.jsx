@@ -3,7 +3,8 @@ import * as authService from './auth.service';
 import { setOnUnauthorized } from '../api/httpClient';
 import { clearToken } from './tokenStorage';
 
-const AuthContext = createContext(null);
+// Storybook gibi izole ortamlarda sahte kullanıcı enjekte edebilmek için dışa açık
+export const AuthContext = createContext(null);
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);

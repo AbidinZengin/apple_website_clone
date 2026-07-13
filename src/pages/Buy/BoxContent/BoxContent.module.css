@@ -1,0 +1,74 @@
+/* Konfigürasyon grid'inden ince çizgiyle ayrılan sakin bölüm (Apple buy deseni) */
+.section {
+  margin-top: var(--space-5xl);
+  padding-top: var(--space-4xl);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  font-size: var(--font-size-subheadline);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  color: #1d1d1f;
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+}
+
+.tiles {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-lg);
+}
+
+.tile {
+  margin: 0;
+  width: min(300px, 42vw);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+/* Dikey görsel kartı — galeri çerçevesiyle aynı zemin dili */
+.visual {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  background: #f5f5f7;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.visual img {
+  width: 78%;
+  height: 78%;
+  object-fit: contain;
+  user-select: none;
+}
+
+.caption {
+  font-size: var(--font-size-body-sm);
+  color: #1d1d1f;
+  text-align: center;
+}
+
+.note {
+  max-width: 600px;
+  margin: var(--space-2xl) auto 0;
+  font-size: var(--font-size-caption);
+  line-height: 1.5;
+  color: #6e6e73;
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .tiles {
+    gap: var(--space-sm);
+  }
+
+  .tile {
+    width: min(240px, 44vw);
+  }
+}

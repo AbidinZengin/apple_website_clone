@@ -1,24 +1,28 @@
 import { useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
+import { formatPrice } from '../../../utils/formatPrice';
 import styles from './CartPanel.module.css';
 
-// Backend fiyatları USD gelir (contract notu). Intl ile para birimine göre biçimlenir.
-function formatPrice(amount, currency = 'USD') {
-  try {
-    return new Intl.NumberFormat('en-US', { style: 'currency', currency }).format(amount ?? 0);
-  } catch {
-    return `${(amount ?? 0).toFixed(2)} ${currency}`;
-  }
-}
-
-function CloseIcon() {
+function TrashIcon() {
   return (
-    <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" width="12" height="12">
-      <path d="M3.5 3.5L12.5 12.5M12.5 3.5L3.5 12.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+    <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" width="14" height="14">
+      <path
+        d="M2.5 4h11M6 4V2.5h4V4M12.5 4l-.6 9.5H4.1L3.5 4M6.5 6.5v5M9.5 6.5v5"
+        stroke="currentColor"
+        strokeWidth="1.2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   );
 }
 
+/**
+ * Bir sepet satırı = 4 sütunlu grid'in (ad · adet · fiyat · sil) bir kaydı.
+ * Ürün adı uzun olduğunda (GB · renk · model) ad hücresi çok satıra sararak
+ * aşağı uzar; satır grid'i `align-items: center` olduğu için Adet/Fiyat/Sil
+ * sütunları o uzayan satırın dikey ortasında kalır (kullanıcı kuralı).
+ */
 function CartRow({ item, currency, onQuantityChange, onRemove }) {
   const unavailable = !item.available;
   // Miktar 1'den aşağı düşerse satır silinir (contract'ta 0 miktar tanımsız).
@@ -27,39 +31,50 @@ function CartRow({ item, currency, onQuantityChange, onRemove }) {
 
   return (
     <li className={`${styles.row} ${unavailable ? styles.rowUnavailable : ''}`}>
-      <div className={styles.thumb}>
-        {item.thumbnail ? <img src={item.thumbnail} alt="" /> : <div className={styles.thumbFallback} aria-hidden="true" />}
+      <div className={styles.product}>
+        <div className={styles.thumb}>
+          {item.thumbnail ? <img src={item.thumbnail} alt="" /> : <div className={styles.thumbFallback} aria-hidden="true" />}
+        </div>
+        <div className={styles.productText}>
+          <p className={styles.name}>{item.name}</p>
+          {item.variant && <p className={styles.variant}>{item.variant}</p>}
+          {unavailable && <p className={styles.unavailable}>No longer available</p>}
+        </div>
       </div>
 
-      <div className={styles.info}>
-        <p className={styles.name} title={item.name}>{item.name}</p>
-        {item.variant && <p className={styles.variant}>{item.variant}</p>}
-
+      <div className={styles.numberCell}>
         {unavailable ? (
-          <p className={styles.unavailable}>Artık mevcut değil — kaldırmanızı öneririz</p>
+          <span className={styles.dash} aria-hidden="true">—</span>
         ) : (
           <div className={styles.qty}>
-            <button type="button" className={styles.qtyBtn} onClick={decrement} aria-label="Adet azalt">−</button>
-            <span className={styles.qtyValue} aria-label={`Adet: ${item.quantity}`}>{item.quantity}</span>
-            <button type="button" className={styles.qtyBtn} onClick={increment} aria-label="Adet artır">+</button>
+            <button type="button" className={styles.qtyBtn} onClick={decrement} aria-label="Decrease quantity">−</button>
+            <span className={styles.qtyValue} aria-label={`Quantity: ${item.quantity}`}>{item.quantity}</span>
+            <button type="button" className={styles.qtyBtn} onClick={increment} aria-label="Increase quantity">+</button>
           </div>
         )}
       </div>
 
-      <div className={styles.rowRight}>
+      <div className={styles.priceCell}>
         <span className={styles.lineTotal}>{formatPrice(item.lineTotal, currency)}</span>
-        <button type="button" className={styles.remove} onClick={() => onRemove(item.id)} aria-label={`${item.name} ürününü kaldır`}>
-          <CloseIcon />
-        </button>
       </div>
+
+      <button
+        type="button"
+        className={styles.remove}
+        onClick={() => onRemove(item.id)}
+        aria-label={`Remove ${item.name}`}
+      >
+        <TrashIcon />
+      </button>
     </li>
   );
 }
 
 /**
- * Bag ikonu altında açılan mini-sepet. AccountMenu ile aynı konum/kapanma deseni
- * (ikonun sağ kenarına hizalı, sola doğru açılır; dışarı tıkla / Escape kapatır).
- * Sunum bileşeni: veriyi ve aksiyonları props ile alır — bağlama NavActions'ta useCart() ile yapılır.
+ * Bag ikonu altında açılan mini-sepet — 3 sütunlu sipariş tablosu
+ * (Product name · Number · Price) + sil. AccountMenu ile aynı konum/kapanma
+ * deseni (ikonun sağ kenarına hizalı, sola açılır; dış tıklama / Escape kapatır).
+ * Sunum bileşeni: veri ve aksiyonlar props ile gelir — bağlama NavActions'ta useCart() ile yapılır.
  */
 export default function CartPanel({
   open,
@@ -95,25 +110,32 @@ export default function CartPanel({
         <motion.div
           className={styles.panel}
           role="dialog"
-          aria-label="Sepet"
+          aria-label="Orders"
           initial={{ opacity: 0, scale: 0.82, x: 10, y: -14 }}
           animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
           exit={{ opacity: 0, scale: 0.86, x: 10, y: -14 }}
           transition={{ type: 'spring', stiffness: 360, damping: 26, mass: 0.9 }}
         >
-          <header className={styles.header}>
-            <h2 className={styles.title}>Sepet</h2>
+          <header className={styles.titleBar}>
+            <h2 className={styles.title}>Orders</h2>
             {!isEmpty && (
-              <button type="button" className={styles.clear} onClick={onClear}>Temizle</button>
+              <button type="button" className={styles.clear} onClick={onClear}>Clear</button>
             )}
           </header>
 
           {loading && isEmpty ? (
-            <p className={styles.state}>Yükleniyor…</p>
+            <p className={styles.state}>Loading…</p>
           ) : isEmpty ? (
-            <p className={styles.state}>Sepetiniz boş.</p>
+            <p className={styles.state}>Your bag is empty.</p>
           ) : (
             <>
+              <div className={styles.columns} aria-hidden="true">
+                <span>Product name</span>
+                <span className={styles.colNumber}>Number</span>
+                <span className={styles.colPrice}>Price</span>
+                <span />
+              </div>
+
               <ul className={styles.list}>
                 {items.map((item) => (
                   <CartRow
@@ -127,12 +149,12 @@ export default function CartPanel({
               </ul>
 
               <footer className={styles.footer}>
-                <div className={styles.subtotal}>
-                  <span>Ara toplam</span>
-                  <span className={styles.subtotalValue}>{formatPrice(cart.subtotal, cart.currency)}</span>
+                <div className={styles.total}>
+                  <span className={styles.totalLabel}>Total Price</span>
+                  <span className={styles.totalValue}>{formatPrice(cart.subtotal, cart.currency)}</span>
                 </div>
                 <button type="button" className={styles.checkout} onClick={onCheckout}>
-                  Ödemeye geç
+                  Buy
                 </button>
               </footer>
             </>

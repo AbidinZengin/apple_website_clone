@@ -13,6 +13,7 @@ import MacBookPro from './pages/Mac/MacBookPro/MacBookPro';
 import IPadAir from './pages/IPadAir/IPadAir';
 import IPadPro from './pages/IPadPro/IPadPro';
 import AirPodsPro from './pages/AirPods/AirPodsPro/AirPodsPro';
+import BuyPage from './pages/Buy/BuyPage';
 import './styles/global.css';
 
 export default function App() {
@@ -39,6 +40,7 @@ export default function App() {
             <Route path="/ipad/ipad-air" element={<IPadAir />} />
             <Route path="/ipad/ipad-pro" element={<IPadPro />} />
             <Route path="/airpods/airpods-pro" element={<AirPodsPro />} />
+            <Route path="/buy/:productType/:slug" element={<BuyPage />} />
             <Route path="*" element={<Home />} />
           </Routes>
         </AnimatePresence>

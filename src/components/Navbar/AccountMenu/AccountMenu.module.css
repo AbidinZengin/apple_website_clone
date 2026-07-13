@@ -1,10 +1,13 @@
+/* İkon navbar'ın en sağında; panel sola doğru açılır, sağ kenarı ikonla hizalı.
+   Genişlik viewport'a göre daralır — dar ekranda ekran dışına taşmaz.
+   Sağ kenar boşluğu: dar ekranda min() ikinci terimi devreye girip
+   kenardan --space-sm nefes payı bırakır. */
 .menu {
   position: absolute;
-  top: calc(100% + var(--space-2xs));
+  top: calc(100% + var(--space-xs));
   right: 0;
-  min-width: 200px;
-  max-width: 280px;
-  padding: var(--space-2xs);
+  width: min(300px, calc(100vw - 2 * var(--space-sm)));
+  padding: var(--space-xs);
   border-radius: var(--radius-md);
   background: var(--mega-bg);
   border: 1px solid var(--nav-border);
@@ -12,20 +15,35 @@
   transform-origin: top right;
 }
 
-.username {
-  padding: var(--space-2xs) var(--space-xs);
+.title {
+  padding: var(--space-3xs) var(--space-xs) var(--space-2xs);
   font-size: var(--font-size-label);
-  color: var(--nav-text-muted);
+  font-weight: 600;
+  color: var(--nav-text);
   text-align: left;
+}
+
+/* Oturum bilgisi — panelin tek gerçek veri satırı */
+.profile {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: var(--space-2xs) var(--space-xs);
+  border-radius: var(--radius-sm);
+  background: var(--nav-hover-bg);
+}
+
+.profileLabel {
+  font-size: var(--font-size-caption);
+  color: var(--nav-text-muted);
+}
+
+.profileName {
+  font-size: var(--font-size-label);
+  color: var(--nav-text);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-}
-
-.divider {
-  height: 1px;
-  margin: 0 var(--space-3xs);
-  background: var(--nav-border);
 }
 
 .item {
@@ -42,4 +60,10 @@
 
 .item:hover {
   background: var(--nav-hover-bg);
+}
+
+.divider {
+  height: 1px;
+  margin: var(--space-2xs) var(--space-3xs);
+  background: var(--nav-border);
 }

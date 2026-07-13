@@ -4,10 +4,11 @@ import { useAuth } from '../../../services/auth/AuthContext';
 import styles from './AccountMenu.module.css';
 
 /**
- * Girişli kullanıcının hesap ikonu altında açılan mini menüsü.
+ * Girişli kullanıcının hesap ikonu altında açılan hesap panelidir.
+ * Panel ikonun sol kenarıyla hizalı, hemen altından açılır (bkz. .module.css).
  * Renkleri Navbar'ın tema değişkenlerinden (--mega-bg, --nav-text...) devralır,
  * bu yüzden light/dark sayfalarda otomatik uyumludur.
- * anchorRef: ikon + menüyü saran kapsayıcı — dış tıklama tespiti için.
+ * anchorRef: ikon + paneli saran kapsayıcı — dış tıklama tespiti için.
  */
 export default function AccountMenu({ open, onClose, anchorRef }) {
   const { user, logout } = useAuth();
@@ -38,10 +39,21 @@ export default function AccountMenu({ open, onClose, anchorRef }) {
           exit={{ opacity: 0, y: -6, scale: 0.98 }}
           transition={{ duration: 0.2, ease: [0.32, 0.72, 0, 1] }}
         >
-          <p className={styles.username} title={user.username}>
-            {user.username}
-          </p>
+          <p className={styles.title}>Hesap Bilgileri</p>
+
+          <div className={styles.profile}>
+            <span className={styles.profileLabel}>Oturum</span>
+            <span className={styles.profileName} title={user.username}>
+              {user.username}
+            </span>
+          </div>
+
+          <button type="button" className={styles.item}>
+            Ayarlar
+          </button>
+
           <div className={styles.divider} />
+
           <button
             type="button"
             className={styles.item}

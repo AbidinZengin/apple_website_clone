@@ -22,11 +22,22 @@ const CART_ITEMS = '/api/cart/items';
  * böylece tek bozuk satır tüm sepeti düşürmez (bkz. auth.service.toAuthUser).
  * Alan adı belirsizlikleri (name/thumbnail) burada tek yerde toplanır — contract netleşince sadeleşir.
  */
+/**
+ * Cloudinary BUY görsellerinde ürün 16:9 kanvasın ortasında küçük durur;
+ * e_trim beyaz kenarları kırpar (ürün thumb'ı doldurur), w/h 44px kutu için
+ * dosyayı küçültür (3x retina payı). Cloudinary dışı URL'ler olduğu gibi geçer.
+ */
+function toThumbnailUrl(url) {
+  if (typeof url !== 'string' || !url.includes('/image/upload/')) return url ?? null;
+  return url.replace('/image/upload/', '/image/upload/e_trim/w_132,h_132,c_fit/');
+}
+
 function toCartItem(raw) {
   if (!raw || typeof raw !== 'object') return null;
 
   const id = raw.id ?? raw.itemId;
   const unitPrice = raw.unitPrice ?? raw.price;
+  const variantLabel = raw.variantLabel ?? raw.variant ?? raw.variantName ?? raw.option ?? '';
   const quantity = raw.quantity ?? raw.qty ?? 1;
 
   if (id == null || typeof unitPrice !== 'number') return null;
@@ -38,12 +49,12 @@ function toCartItem(raw) {
     productType: raw.productType ?? null,
     variantId: raw.variantId ?? null,
     name: raw.name ?? raw.productName ?? raw.title ?? '',
-    variant: raw.variant ?? raw.variantName ?? raw.option ?? '',
+    variant: variantLabel,
     unitPrice,
     quantity: safeQty,
     lineTotal: typeof raw.lineTotal === 'number' ? raw.lineTotal : unitPrice * safeQty,
     available: raw.available !== false, // yalnızca açıkça false ise pasif say
-    thumbnail: raw.thumbnail ?? raw.image ?? raw.imageUrl ?? null,
+    thumbnail: toThumbnailUrl(raw.thumbnail ?? raw.image ?? raw.imageUrl),
   };
 }
 
@@ -55,7 +66,7 @@ export function toCart(raw) {
   const rawItems = Array.isArray(raw?.items) ? raw.items : Array.isArray(raw) ? raw : [];
   const items = rawItems.map(toCartItem).filter(Boolean);
 
-  const backendTotal = raw?.subtotal ?? raw?.total ?? raw?.grandTotal;
+  const backendTotal = raw?.subtotal ?? raw?.totalPrice ?? raw?.total ?? raw?.grandTotal;
   const subtotal =
     typeof backendTotal === 'number'
       ? backendTotal
@@ -76,9 +87,14 @@ export async function getCart() {
   return toCart(await request(CART));
 }
 
-/** Sepete varyant ekler. Yanıt güncel sepeti döndürür. */
+/**
+ * Sepete varyant ekler. Yanıt güncel sepeti döndürür.
+ * productType route param'dan küçük harf gelir ("iphone"); backend ProductType
+ * enum'u (IPHONE/MACBOOK) case-sensitive olduğundan burada normalize edilir.
+ */
 export async function addItem({ productType, variantId, quantity = 1 }) {
-  return toCart(await request(CART_ITEMS, { method: 'POST', body: { productType, variantId, quantity } }));
+  const type = typeof productType === 'string' ? productType.toUpperCase() : productType;
+  return toCart(await request(CART_ITEMS, { method: 'POST', body: { productType: type, variantId, quantity } }));
 }
 
 /** Satır miktarını günceller (+/-). Yanıt güncel sepeti döndürür. */

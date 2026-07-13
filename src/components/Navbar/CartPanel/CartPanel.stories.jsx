@@ -30,7 +30,7 @@ function Stage({ children }) {
 
 const FILLED_CART = {
   currency: 'USD',
-  subtotal: 3196,
+  subtotal: 4595,
   items: [
     {
       id: '1',
@@ -39,6 +39,17 @@ const FILLED_CART = {
       unitPrice: 1199,
       quantity: 1,
       lineTotal: 1199,
+      available: true,
+      thumbnail: null,
+    },
+    {
+      // Uzun ad + varyant: ad hücresi aşağı sarar, Adet/Fiyat ortada kalmalı
+      id: '4',
+      name: 'iPhone 17 Pro Max',
+      variant: '1TB · Natural Titanium · with AppleCare+ Protection Plan',
+      unitPrice: 1399,
+      quantity: 1,
+      lineTotal: 1399,
       available: true,
       thumbnail: null,
     },

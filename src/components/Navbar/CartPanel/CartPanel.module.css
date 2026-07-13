@@ -1,10 +1,12 @@
 .panel {
   position: absolute;
   top: calc(100% + var(--space-sm));
-  right: -6px;
-  width: 360px;
+  /* Panel sağ kenarı, çantadan sonraki hesap ikonu (32) + boşluğu (8) da geçerek
+     navbar'ın sağ kenarına hizalanır — ortaya değil sağa yakın açılır. */
+  right: -44px;
+  width: 440px;
   max-width: calc(100vw - var(--space-md));
-  padding: var(--space-sm);
+  padding: var(--space-md) var(--space-sm) var(--space-sm);
   border-radius: var(--radius-md);
   background: var(--mega-bg);
   border: 1px solid var(--nav-border);
@@ -13,12 +15,13 @@
   color: var(--nav-text);
 }
 
-/* Header */
-.header {
+/* Ortada başlık; "Clear" sağa sabitlenir, başlığın görsel ortalanışını bozmaz */
+.titleBar {
+  position: relative;
   display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  margin-bottom: var(--space-xs);
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-sm);
 }
 
 .title {
@@ -30,6 +33,8 @@
 }
 
 .clear {
+  position: absolute;
+  right: 0;
   font-size: var(--font-size-label);
   color: var(--nav-text-muted);
   transition: color var(--duration-base) var(--ease-apple);
@@ -47,35 +52,64 @@
   color: var(--nav-text-muted);
 }
 
+/* Sütun başlıkları + satırlar aynı grid şablonunu paylaşır → dikey hizalı sütunlar.
+   Ürün | Adet | Fiyat | Sil */
+.columns,
+.row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(64px, auto) 20px;
+  align-items: center;
+  column-gap: var(--space-sm);
+}
+
+.columns {
+  padding-bottom: var(--space-2xs);
+  border-bottom: 1px solid var(--nav-border);
+  font-size: var(--font-size-label);
+  color: var(--nav-text-muted);
+}
+
+.colNumber {
+  text-align: center;
+}
+
+.colPrice {
+  text-align: right;
+}
+
 /* Item list */
 .list {
   display: flex;
   flex-direction: column;
-  max-height: 340px;
+  max-height: 360px;
   overflow-y: auto;
 }
 
 .row {
-  display: flex;
-  gap: var(--space-xs);
-  padding: var(--space-xs) 0;
+  padding: var(--space-sm) 0;
   border-bottom: 1px solid var(--nav-border);
-}
-
-.row:first-child {
-  padding-top: 0;
 }
 
 .rowUnavailable {
   opacity: 0.6;
 }
 
+/* Ürün adı sütunu: thumbnail + (ad, varyant). Uzun adlar sararak aşağı uzar. */
+.product {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  min-width: 0;
+}
+
 .thumb {
   flex-shrink: 0;
-  width: 48px;
-  height: 48px;
+  width: 44px;
+  height: 44px;
   border-radius: var(--radius-sm);
-  background: var(--icon-btn-bg);
+  /* Görselin gerçek zemin rengiyle birebir (learned rule #1) → e_trim sonrası
+     kalan köşe pikselleri kutuyla kaynaşır, görsel "beyaz kutu" gibi ayrışmaz */
+  background: #f5f4f7;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -95,8 +129,7 @@
   background: var(--nav-hover-bg);
 }
 
-.info {
-  flex: 1;
+.productText {
   min-width: 0;
   display: flex;
   flex-direction: column;
@@ -107,14 +140,13 @@
   font-size: var(--font-size-caption);
   font-weight: 500;
   color: var(--nav-text);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  overflow-wrap: anywhere;
 }
 
 .variant {
   font-size: var(--font-size-label);
   color: var(--nav-text-muted);
+  overflow-wrap: anywhere;
 }
 
 .unavailable {
@@ -122,16 +154,23 @@
   color: #ff6b6b;
 }
 
-/* Quantity stepper */
+/* Number sütunu */
+.numberCell {
+  display: flex;
+  justify-content: center;
+}
+
+.dash {
+  color: var(--nav-text-muted);
+}
+
 .qty {
   display: inline-flex;
   align-items: center;
   gap: var(--space-xs);
-  margin-top: var(--space-3xs);
-  padding: 2px var(--space-2xs);
+  padding: 3px var(--space-2xs);
   border-radius: var(--radius-pill);
   background: var(--icon-btn-bg);
-  width: fit-content;
 }
 
 .qtyBtn {
@@ -157,12 +196,9 @@
   color: var(--nav-text);
 }
 
-.rowRight {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  justify-content: space-between;
-  flex-shrink: 0;
+/* Price sütunu */
+.priceCell {
+  text-align: right;
 }
 
 .lineTotal {
@@ -188,10 +224,12 @@
 
 /* Footer */
 .footer {
-  margin-top: var(--space-sm);
+  margin-top: var(--space-md);
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--nav-border);
 }
 
-.subtotal {
+.total {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
@@ -200,7 +238,7 @@
   color: var(--nav-text);
 }
 
-.subtotalValue {
+.totalValue {
   font-weight: 600;
   letter-spacing: -0.01em;
 }
