@@ -46,58 +46,10 @@ export const Header = ({ translate, titleComponent }) => (
 );
 
 export const Card = ({ rotate, scale, children }) => (
-  <motion.div
-    style={{
-      rotateX: rotate,
-      scale,
-      background: "linear-gradient(145deg, #4a4a4c 0%, #323234 15%, #222224 30%, #1a1a1c 50%, #202022 65%, #303032 80%, #484849 100%)",
-      boxShadow: `
-        inset 0 2px 1px rgba(255,255,255,0.15),
-        inset 0 -2px 1px rgba(0,0,0,0.70),
-        inset 2px 0 1px rgba(255,255,255,0.08),
-        inset -2px 0 1px rgba(0,0,0,0.50),
-        0 0 0 1px rgba(0,0,0,0.60),
-        0 2px 4px rgba(0,0,0,0.50),
-        0 8px 16px rgba(0,0,0,0.55),
-        0 24px 48px rgba(0,0,0,0.45),
-        0 60px 80px rgba(0,0,0,0.30)
-      `,
-      border: "1px solid rgba(255,255,255,0.08)",
-      padding: "22px",
-      borderRadius: "38px",
-      maxWidth: "64rem",
-      marginTop: "-48px",
-      marginLeft: "auto",
-      marginRight: "auto",
-      height: "640px",
-      width: "100%",
-      position: "relative",
-    }}
-  >
-    <div
-      style={{
-        position: "absolute",
-        top: "10px",
-        left: "50%",
-        transform: "translateX(-50%)",
-        width: "8px",
-        height: "8px",
-        borderRadius: "50%",
-        background: "radial-gradient(circle at 38% 32%, #555, #080808)",
-        boxShadow: "0 0 0 1.5px rgba(0,0,0,0.55), 0 0 0 3px rgba(160,160,160,0.28), inset 0 1px 3px rgba(255,255,255,0.18)",
-        zIndex: 10,
-      }}
-    />
-    <div
-      style={{
-        height: "100%",
-        width: "100%",
-        overflow: "hidden",
-        borderRadius: "20px",
-        background: "#000",
-      }}
-    >
-      {children}
-    </div>
+  // Boyut/görünüm stilleri CSS module'de (.card responsive); yalnızca scroll'a
+  // bağlı motion değerleri (rotateX, scale) inline kalır.
+  <motion.div className={styles.card} style={{ rotateX: rotate, scale }}>
+    <div className={styles.cameraDot} />
+    <div className={styles.screen}>{children}</div>
   </motion.div>
 );

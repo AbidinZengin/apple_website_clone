@@ -28,6 +28,7 @@ kullanıcının gerçekte söylediği şeylerdir, tahmin değil.
 
 ### Layout & Spacing
 - **[layout]** İçerik konteynerleri max-width 1200px (Navbar, SectionTitle, hero'lar); kartlar 1100px; gövde metni blokları 560–640px'i geçmez. _(2026-07, kod taraması — kullanıcı onaylı)_
+- **[layout]** Çok sütunlu satır listelerinde (sepet/sipariş tablosu vb.) satır bir CSS grid'dir ve `align-items: center` alır: uzun ürün adı (GB · renk · model) hücreyi çok satıra sarıp aşağı uzatsa bile Adet/Fiyat/aksiyon sütunları satırın dikey ortasında kalır. Ad hücresi `overflow-wrap: anywhere` ile sarar, ellipsis ile kesilmez. _(2026-07, CartPanel)_
 
 ### Tipografi
 - **[tipografi]** Hero/display başlıkları 64–80px aralığında (responsive için `clamp(40px, 6vw, ~76px)` deseni); daha küçük varsayılanlar kullanıcının beğenmediği "küçük kalmış" hissi verir. _(2026-07, kod taraması — kullanıcı onaylı)_

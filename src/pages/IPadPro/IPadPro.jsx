@@ -79,9 +79,10 @@ const highlightSlides = [
     // Template: 3 statement alt alta; sonuncusu "Apple Pencil Pro" (gradyan, tik attığın alt kutu).
     caption: (
       <span style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 'clamp(18px, 4vh, 40px)' }}>
-        <span style={{paddingTop :"100px"}}>Precise creative control.</span>
+        {/* px'ler clamp'e çevrildi: geniş ekranda maks (PC'de aynı), mobilde küçülür */}
+        <span style={{ paddingTop: 'clamp(16px, 8vw, 100px)' }}>Precise creative control.</span>
         <span >Squeeze and roll.</span>
-        <span style={{ ...themeGradientText, fontWeight: 900 , fontSize : "50px"}}>Apple Pencil Pro</span>
+        <span style={{ ...themeGradientText, fontWeight: 900, fontSize: 'clamp(22px, 5.2vw, 50px)' }}>Apple Pencil Pro</span>
       </span>
     ),
     ariaLabel: 'Precise creative control. Squeeze, roll, and hover. Apple Pencil Pro.',
@@ -121,7 +122,7 @@ const highlightSlides = [
       </span>
     ),
     ariaLabel: 'True multitasking. Two apps, side by side. Do more at once.',
-    captionSize: '34px',
+    captionSize: '37px',
     captionColor: '#1d1d1f',
     captionFrom: 'right',
     // Sağ tarafta dikey ortada; görsel sola bleed eder.
@@ -147,8 +148,8 @@ export default function IPadPro() {
     <>
       <IPadProHero />
       <Highlight
-        title="Öne çıkanlar"
-        filmLabel="Filmi izle"
+        title="Get the Highligths"
+        filmLabel="Watch the film"
         filmHref="#"
         slides={highlightSlides}
         background="#262626"

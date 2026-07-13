@@ -13,7 +13,8 @@
 }
 
 .title {
-  font-size: clamp(var(--font-size-title), 5vw, var(--font-size-headline));
+  /* min mobil için düşürüldü; vw + max ucu (desktop) aynı kaldı */
+  font-size: clamp(26px, 5vw, var(--font-size-headline));
   font-weight: 600;
   line-height: 1.05;
   letter-spacing: -0.02em;
@@ -24,7 +25,8 @@
   display: block;
   font-weight: 700;
   letter-spacing: -0.04em;
-  font-size: clamp(var(--font-size-headline), 8vw, 96px);
+  font-size: clamp(34px, 8vw, 96px);
+  padding-bottom: 50px;
 }
 
 .subheadline {
@@ -46,5 +48,9 @@
 @media (max-width: 768px) {
   .heading {
     margin-top: -80px;
+  }
+
+  .accent {
+    padding-bottom: 24px;
   }
 }

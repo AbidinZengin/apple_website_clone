@@ -74,7 +74,14 @@
     linear-gradient(to bottom, #000 0%, transparent 18%, transparent 82%, #000 100%);
 }
 
-.buyBtn {
+/* Learn more (dolgu) + Buy (link) yan yana */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+}
+
+.learnMoreBtn {
   padding: 8px 40px;
   font-size: 26px;
   font-weight: 500;
@@ -84,11 +91,34 @@
   border-radius: var(--radius-pill);
   border: none;
   cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
   transition: background-color var(--duration-base) ease;
 }
 
-.buyBtn:hover {
+.learnMoreBtn:hover {
   background: #0077ed;
+}
+
+.buyLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 0;
+  font-size: 26px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: #2997ff;
+  background: none;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color var(--duration-base) ease;
+}
+
+.buyLink:hover {
+  color: #2997ff;
+  text-decoration: underline;
 }
 
 @media (max-width: 480px) {

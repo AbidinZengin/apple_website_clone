@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import styles from './ProductCard.module.css';
+
+const MotionLink = motion.create(Link);
 
 const springTransition = { type: 'spring', stiffness: 160, damping: 28 };
 
@@ -57,16 +60,24 @@ export default function ProductCard({ title, subtitle, price, videoSrc }) {
           <div className={styles.vignette} aria-hidden="true" />
         </motion.div>
 
-        {/* Button — hover kaynağı, kendi merkezinden büyür */}
-        <motion.button
-          className={styles.buyBtn}
-          animate={{ scale: active ? 1.1 : 1 }}
-          transition={springTransition}
-          onMouseEnter={() => setActive(true)}
-          onMouseLeave={() => setActive(false)}
-        >
-          Satın al
-        </motion.button>
+        {/* Actions — Learn more hover kaynağı, video onunla birlikte büyür */}
+        <div className={styles.actions}>
+          <MotionLink
+            to="/iphone/iphone-17-pro"
+            className={styles.learnMoreBtn}
+            animate={{ scale: active ? 1.1 : 1 }}
+            transition={springTransition}
+            onMouseEnter={() => setActive(true)}
+            onMouseLeave={() => setActive(false)}
+          >
+            Learn more
+          </MotionLink>
+
+          {/* Buy — satın alma / konfigürasyon sayfası */}
+          <Link to="/buy/iphone/iphone-17-pro" className={styles.buyLink}>
+            Buy <span aria-hidden="true">›</span>
+          </Link>
+        </div>
       </motion.div>
     </motion.div>
   );

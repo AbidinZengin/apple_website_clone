@@ -28,6 +28,20 @@ const CAPTION_ENTER = {
   down: { x: 0, y: -40 }, // üstten iner, aşağı doğru çıkar
 };
 
+// Sabit px caption boyutunu, KONUMU bozmadan ekrana göre küçülen akışkan bir
+// değere çevirir: geniş ekranda (≈≥1024px) verilen px'te kalır (desktop birebir
+// aynı), daha dar ekranda orantılı küçülür. clamp/rem/em gelirse dokunmaz.
+// Böylece her sayfa tek tek clamp yazmadan generic olarak responsive olur.
+function fluidCaptionSize(size) {
+  if (typeof size !== 'string') return size;
+  const match = size.match(/^(\d+(?:\.\d+)?)px$/);
+  if (!match) return size;
+  const px = parseFloat(match[1]);
+  const min = Math.round(px * 0.46); // mobil taban (okunabilir kalır)
+  const vw = ((px / 1024) * 100).toFixed(2); // ~1024px'te maks'a ulaşır
+  return `clamp(${min}px, ${vw}vw, ${px}px)`;
+}
+
 function FilmGlyph() {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" aria-hidden="true" className={styles.filmGlyph}>
@@ -180,7 +194,7 @@ export default function Highlight({
                   className={styles.caption}
                   style={{
                     ...(color != null && { color }),
-                    ...(size != null && { fontSize: size }),
+                    ...(size != null && { fontSize: fluidCaptionSize(size) }),
                     // 'left'/'right' hizada blok kenara yaslanır, ortalama kalkar.
                     ...(align === 'left' && { textAlign: 'left', margin: 0 }),
                     ...(align === 'right' && { textAlign: 'right', margin: '0 0 0 auto' }),

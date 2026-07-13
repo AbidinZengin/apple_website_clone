@@ -3,9 +3,9 @@
 import screenImage from '../../../assets/ipad/ipad-air-screen.jpg';
 
 export const DESIGN_SHOWCASE = {
-  titlePlain: 'İnce ve hafif bir tasarım,',
-  titleAccent: 'olağanüstü bir güç.',
-  subheadline: 'iPad Pro · M5 çip · 84.999 TL’den başlayan fiyatlarla',
+  titlePlain: 'A thin and light design,',
+  titleAccent: 'extraordinary power.',
+  subheadline: '',
   screenImage,
   screenAlt: 'iPadOS arayüzü',
 };
